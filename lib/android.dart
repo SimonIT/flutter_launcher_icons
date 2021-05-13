@@ -99,20 +99,17 @@ void createAdaptiveIcons(
       flutterLauncherIconsConfig['adaptive_icon_background'];
   final String foregroundImagePath =
       flutterLauncherIconsConfig['adaptive_icon_foreground'];
-  final Image? foregroundImage = decodeImageFile(foregroundImagePath);
+  Image? foregroundImage = decodeImageFile(foregroundImagePath);
   if (foregroundImage == null) {
     return;
   }
-  final double foregroundScaleFactor =
+  final double? foregroundScaleFactor =
       flutterLauncherIconsConfig['adaptive_icon_foreground_scale_factor'];
-  final String foregroundScaleFillColor =
+  final String? foregroundScaleFillColor =
       flutterLauncherIconsConfig['adaptive_icon_foreground_scale_fill_color'];
 
   final bool rescale = foregroundScaleFactor != null &&
-      foregroundScaleFactor > 0 &&
-      foregroundImage != null;
-
-  Image rescaledImage;
+      foregroundScaleFactor > 0;
 
   // Scales the foreground image prior to converting to icon.
   // This is intended for scaling down to match adaptive icon spec
@@ -123,7 +120,7 @@ void createAdaptiveIcons(
       return int.parse(hexColor, radix: 16);
     }
 
-    rescaledImage = rescaleImage(foregroundImage, foregroundScaleFactor,
+    foregroundImage = rescaleImage(foregroundImage, foregroundScaleFactor,
         fillColor: foregroundScaleFillColor != null &&
                 foregroundScaleFillColor.isNotEmpty
             ? _getColorFromHex(foregroundScaleFillColor)
@@ -134,7 +131,7 @@ void createAdaptiveIcons(
   for (AndroidIconTemplate androidIcon in adaptiveForegroundIcons) {
     overwriteExistingIcons(
         androidIcon,
-        rescale ? rescaledImage : foregroundImage,
+        foregroundImage,
         constants.androidAdaptiveForegroundFileName,
         flavor);
   }
