@@ -9,6 +9,15 @@ A command-line tool which simplifies the task of updating your Flutter app's lau
 
 ## :sparkles: What's New
 
+#### Version 0.9.2 (22nd August 2021)
+
+- Fixed issue where success message printed even when exception occured (thanks to @happy-san)
+
+#### Version 0.9.1 (25th July 2021)
+
+- Upgraded `args` dependency to ^2.1.1 (thanks to @PiN73 and @comlaterra)
+- Upgraded `image` and `test` dependencies
+
 #### Version 0.9.0 (28th Feb 2021)
 
 - Null-safety support added (thanks to @SteveAlexander)
@@ -34,7 +43,7 @@ Add your Flutter Launcher Icons configuration to your `pubspec.yaml` or create a
 An example is shown below. More complex examples [can be found in the example projects](https://github.com/fluttercommunity/flutter_launcher_icons/tree/master/example).
 ```yaml
 dev_dependencies:
-  flutter_launcher_icons: "^0.9.0"
+  flutter_launcher_icons: "^0.9.2"
 
 flutter_icons:
   android: "launcher_icon"
@@ -117,9 +126,22 @@ Use #AARRGGBB for colors instead of ##AABBGGRR, to be compatible with Flutter im
 
 #### Image foreground is too big / too small
 
-For best results try and use a foreground image which has padding much like [the one in the example](https://github.com/fluttercommunity/flutter_launcher_icons/blob/master/example/default/assets/images/icon-foreground-432x432.png).
+For best results try and use a foreground image which has padding much like [the one in the example](https://github.com/fluttercommunity/flutter_launcher_icons/blob/master/example/default_example/assets/images/icon-foreground-432x432.png).
 
 [Related issue](https://github.com/fluttercommunity/flutter_launcher_icons/issues/96)
+
+#### Dependency incompatible
+
+You may receive a message similar to the following
+
+```
+Because flutter_launcher_icons >=0.9.0 depends on args 2.0.0 and flutter_native_splash 1.2.0 depends on args ^2.1.1, flutter_launcher_icons >=0.9.0 is incompatible with flutter_native_splash 1.2.0.
+And because no versions of flutter_native_splash match >1.2.0 <2.0.0, flutter_launcher_icons >=0.9.0 is incompatible with flutter_native_splash ^1.2.0.
+So, because enstack depends on both flutter_native_splash ^1.2.0 and flutter_launcher_icons ^0.9.0, version solving failed.
+pub get failed (1; So, because enstack depends on both flutter_native_splash ^1.2.0 and flutter_launcher_icons ^0.9.0, version solving failed.)
+```
+
+For a quick fix, you can temporarily override all references to a dependency: [See here for an example](https://github.com/fluttercommunity/flutter_launcher_icons/issues/262#issuecomment-879872076).
 
 ## :eyes: Example
 

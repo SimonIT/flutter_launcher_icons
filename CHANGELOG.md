@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.9.2 (22nd August 2021)
+
+- Fixed issue where success message printed even when exception occured (thanks to @happy-san)
+
+
+## 0.9.1 (25th July 2021)
+
+- Upgrade args dependency to ^2.1.1 (thanks to @PiN73 and @comlaterra)
+- Upgraded `image` and `test` dependencies
+
 ## 0.9.0 (28th Feb 2021)
 
 - Null-safety support added (thanks to @SteveAlexander)
